@@ -30,18 +30,33 @@
 		<div class="top-bar">
 			<div class="image-holder">
 				<img src="img/WhatsApp%20Image%202024-07-02%20at%2012.06.19%20(2)%5B1%5D.jpeg">
+			
 			</div>
 
 			<div class="write-up">
-				<span>Hello!</span>
-				<h1>I'm Edith O</h1>
+	
+				<h1 data-testid="slackDisplayName"> Edith O</h1>
 				<p>Frontend Web Developer & Designer</p>
-				<a href="mailto:Onyedinmaamaka002@gmail.com">Onyedinmaamaka002@gmail.com</a>
+				<a data-testid="slackEmail" href="mailto:Onyedinmaamaka002@gmail.com">Onyedinmaamaka002@gmail.com</a>
 				
 
-
 			</div>
+			
+			
 		</div>
+		
+		
+		<div class="profile-info">
+          <div>
+            <h5>Current Time in UTC</h5>
+            <p data-testid="currentTimeUTC" id="currentTimeUTC">...</p>
+          </div>
+          <div>
+            <h5>Current Day of the week</h5>
+            <p data-testid="currentDay" id="currentDay">...</p>
+          </div>
+        </div>
+		
 
 		<div class="card-holder">
 			
@@ -145,7 +160,7 @@ diversity_3
 
 		
 					
-
+		
 
 	
 				</div>
@@ -184,9 +199,41 @@ diversity_3
     </footer>
 
 
-			
+	<script>
+      document.addEventListener("DOMContentLoaded", function () {
+        function updateUTCTime() {
+          const now = new Date();
+          const utcTime = now.toUTCString();
+          document.getElementById("currentTimeUTC").textContent = utcTime;
+        }
 
-	</div>
+        // Update the time every second
+        setInterval(updateUTCTime, 1000);
+
+        // Set the initial time
+        updateUTCTime();
+
+        function updateWeekday() {
+          const now = new Date();
+          const weekdays = [
+            "Sunday",
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+          ];
+          const currentWeekday = weekdays[now.getUTCDay()];
+          document.getElementById("currentDay").textContent = currentWeekday;
+        }
+
+        // Set the initial weekday
+        updateWeekday();
+      });
+    </script>	
+
+
 
 
 
